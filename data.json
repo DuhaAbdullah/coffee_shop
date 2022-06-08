@@ -1,0 +1,102 @@
+{
+  "categories": [
+    {
+      "coldDrinks": [
+        {
+          "id": 1,
+          "name": "lattee",
+          "ingrediants": ["milk foam", "espresso", "steamed milk"],
+          "description": "",
+          "img": "assets/images/lattee.jpg",
+          "price": 12,
+          "currency": "$",
+          "size": ["small", "medium", "large"]
+        },
+        {
+          "id": 2,
+          "name": "cappuchino",
+          "ingrediants": ["milk foam", "espresso", "steamed milk"],
+          "description": "",
+          "img": "assets/images/lattee.jpg",
+          "price": 14,
+          "currency": "$",
+          "size": ["small", "medium", "large"]
+        },
+        {
+          "id": 3,
+          "name": "americano",
+          "ingrediants": ["hot water", "espresso"],
+          "description": "",
+          "img": "assets/images/lattee.jpg",
+          "price": 14,
+          "currency": "$",
+          "size": ["small", "medium", "large"]
+        },
+        {
+          "id": 4,
+          "name": "mocha",
+          "ingrediants": [
+            "milk foam",
+            "espresso",
+            "steamed milk",
+            "hot chocolate"
+          ],
+          "description": "",
+          "img": "assets/images/lattee.jpg",
+          "price": 16,
+          "currency": "$",
+          "size": ["small", "medium", "large"]
+        }
+      ],
+      "hotDrinks": [
+        {
+          "id": 1,
+          "name": "espresso",
+          "ingrediants": "espresso",
+          "description": "",
+          "img": "assets/images/lattee.jpg",
+          "price": 10,
+          "currency": "$",
+          "size": ["small", "medium", "large"]
+        },
+        {
+          "id": 2,
+          "name": "flatewhite",
+          "ingrediants": ["espresso", "steamed milk"],
+          "description": "",
+          "img": "assets/images/lattee.jpg",
+          "price": 12,
+          "currency": "$",
+          "size": ["small", "medium", "large"]
+        }
+      ],
+      "popularDrinks": [
+        {
+          "id": 1,
+          "name": "mocha",
+          "ingrediants": [
+            "milk foam",
+            "espresso",
+            "steamed milk",
+            "hot chocolate"
+          ],
+          "description": "",
+          "img": "assets/images/lattee.jpg",
+          "price": 16,
+          "currency": "$",
+          "size": ["small", "medium", "large"]
+        },
+        {
+          "id": 2,
+          "name": "cappuchino",
+          "ingrediants": ["milk foam", "espresso", "steamed milk"],
+          "description": "",
+          "img": "assets/images/lattee.jpg",
+          "price": 14,
+          "currency": "$",
+          "size": ["small", "medium", "large"]
+        }
+      ]
+    }
+  ]
+}
