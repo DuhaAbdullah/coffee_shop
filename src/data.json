@@ -1,0 +1,88 @@
+{
+  "coldDrinks": [
+    {
+      "id": 1,
+      "name": "Iced Caffè Mocha",
+      "ingrediants": ["milk foam", "espresso", "steamed milk"],
+      "description": "",
+      "image": "/images/iced-mocha.webp",
+      "price": 12,
+      "currency": "$",
+      "size": ["small", "medium", "large"]
+    },
+    {
+      "id": 2,
+      "name": "Vanilla Sweet Cream Cold Brew",
+      "ingrediants": ["milk foam", "espresso", "steamed milk"],
+      "description": "",
+      "image": "/images/vanilla-cold-brew.webp",
+      "price": 14,
+      "currency": "$",
+      "size": ["small", "medium", "large"]
+    },
+    {
+      "id": 3,
+      "name": "americano",
+      "ingrediants": ["hot water", "espresso"],
+      "description": "",
+      "image": "/images/black.webp",
+      "price": 14,
+      "currency": "$",
+      "size": ["small", "medium", "large"]
+    },
+    {
+      "id": 4,
+      "name": "Chocolate Cream Cold Brew",
+      "ingrediants": ["milk foam", "espresso", "steamed milk", "hot chocolate"],
+      "description": "",
+      "image": "/images/chocolate-brew.webp",
+      "price": 16,
+      "currency": "$",
+      "size": ["small", "medium", "large"]
+    }
+  ],
+  "hotDrinks": [
+    {
+      "id": 1,
+      "name": "espresso",
+      "ingrediants": "espresso",
+      "description": "",
+      "image": "assets/images/lattee.jpg",
+      "price": 10,
+      "currency": "$",
+      "size": ["small", "medium", "large"]
+    },
+    {
+      "id": 2,
+      "name": "flatewhite",
+      "ingrediants": ["espresso", "steamed milk"],
+      "description": "",
+      "image": "assets/images/lattee.jpg",
+      "price": 12,
+      "currency": "$",
+      "size": ["small", "medium", "large"]
+    }
+  ],
+  "popularDrinks": [
+    {
+      "id": 1,
+      "name": "mocha",
+      "ingrediants": ["milk foam", "espresso", "steamed milk", "hot chocolate"],
+      "description": "",
+      "image": "assets/images/lattee.jpg",
+      "price": 16,
+      "currency": "$",
+      "size": ["small", "medium", "large"]
+    },
+    {
+      "id": 2,
+      "name": "cappuchino",
+      "ingrediants": ["milk foam", "espresso", "steamed milk"],
+      "description": "",
+      "image": "assets/images/lattee.jpg",
+      "price": 14,
+      "currency": "$",
+      "size": ["small", "medium", "large"]
+    }
+  ]
+}
