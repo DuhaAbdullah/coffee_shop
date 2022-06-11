@@ -11,12 +11,12 @@ function Menu() {
         <hr />
         <div className="categories-container">
           <Category
-            link="/hot-coffees"
+            link="hotDrinks"
             name="Hot Coffees"
             image="/images/black.webp"
           />
           <Category
-            link="cold-coffees"
+            link="coldDrinks"
             name="Cold Coffees"
             image="/images/chocolate-brew.webp"
           />
