@@ -21,7 +21,7 @@
       {
         "id": 2,
         "name": "Vanilla Sweet Cream Cold Brew",
-        "ingrediants": ["milk foam", "espresso", "steamed milk"],
+        "ingrediants": ["vanilla" ,"milk foam", "espresso", "steamed milk"],
         "description": "",
         "image": "/images/vanilla-cold-brew.webp",
         "price": 14,
@@ -113,7 +113,7 @@
   },
   "popularDrinks": {
     "id": 3,
-    "name": "Popular",
+    "name": "Popular Coffees",
     "items": [
       {
         "id": 1,
@@ -124,18 +124,18 @@
           "steamed milk",
           "hot chocolate"
         ],
-        "description": "",
-        "image": "assets/images/lattee.jpg",
+        "description": "Caffè Mocha",
+        "image": "/images/mocha.webp",
         "price": 16,
         "currency": "$",
         "size": ["small", "medium", "large"]
       },
       {
         "id": 2,
-        "name": "cappuchino",
+        "name": "Chocolate Cream Cold Brew",
         "ingrediants": ["milk foam", "espresso", "steamed milk"],
         "description": "",
-        "image": "assets/images/lattee.jpg",
+        "image": "/images/chocolate-brew.webp",
         "price": 14,
         "currency": "$",
         "size": ["small", "medium", "large"]

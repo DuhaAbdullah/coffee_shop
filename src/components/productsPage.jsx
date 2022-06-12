@@ -11,7 +11,7 @@ function ProductsPage() {
     <div>
       <NavBar />
       <div className="drinks-container">
-        <h2>Hot drinks</h2>
+        <h2>{categories[params.category].name}</h2>
         <hr />
         <div className="drinks-map">
           {categories[params.category].items.map((drink) => (
