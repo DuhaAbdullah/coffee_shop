@@ -71,3 +71,24 @@ hr {
   display: flex;
   justify-content: center;
 }
+
+.product-head {
+  background-color: #1f3933;
+  min-height: 250px;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.product-head img{
+  height: 250px;
+  width: 250px;
+  
+}
+
+
+.product-head h1{
+  color: #fff;
+  
+}

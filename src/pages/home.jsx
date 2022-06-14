@@ -1,8 +1,7 @@
 import { useState } from "react";
-import NavBar from "./navBar";
+import NavBar from "../components/navBar";
 
 function Home() {
-
   return (
     <div>
       <NavBar />

@@ -7,7 +7,7 @@ function Category(props) {
         <img src={props.image} />
       </div>
       <p>{props.name}</p>
-      <Link to={props.link}></Link>
+      <Link to={props.link} state={props.data}></Link>
     </div>
   );
 }

@@ -1,23 +1,27 @@
-import Category from "./category";
+import Category from "../components/category";
 import categories from "../data.json";
-import NavBar from "./navBar";
+import NavBar from "../components/navBar";
 import { useParams } from "react-router-dom";
 
 function ProductsPage() {
   let params = useParams();
-  console.log(categories[params.category]);
+
+  const filteredCategory = categories.find(
+    (catogory) => catogory.id === params.category
+  );
 
   return (
     <div>
       <NavBar />
       <div className="drinks-container">
-        <h2>{categories[params.category].name}</h2>
+        <h2>{filteredCategory.name}</h2>
         <hr />
         <div className="drinks-map">
-          {categories[params.category].items.map((drink) => (
+          {filteredCategory.items.map((drink) => (
             <Category
               key={drink.id}
-              link=""
+              link={String(drink.id)}
+              data={drink}
               name={drink.name}
               image={drink.image}
             />

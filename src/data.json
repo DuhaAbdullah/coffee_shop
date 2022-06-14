@@ -1,7 +1,8 @@
-{
-  "coldDrinks": {
-    "id": 1,
+[
+  {
+    "id": "coldDrinks",
     "name": "Cold Coffees",
+    "image": "/images/chocolate-brew.webp",
     "items": [
       {
         "id": 1,
@@ -21,7 +22,7 @@
       {
         "id": 2,
         "name": "Vanilla Sweet Cream Cold Brew",
-        "ingrediants": ["vanilla" ,"milk foam", "espresso", "steamed milk"],
+        "ingrediants": ["vanilla", "milk foam", "espresso", "steamed milk"],
         "description": "",
         "image": "/images/vanilla-cold-brew.webp",
         "price": 14,
@@ -55,9 +56,10 @@
       }
     ]
   },
-  "hotDrinks": {
-    "id": 2,
+  {
+    "id": "hotDrinks",
     "name": "Hot Coffees",
+    "image": "/images/black.webp",
     "items": [
       {
         "id": 1,
@@ -111,9 +113,10 @@
       }
     ]
   },
-  "popularDrinks": {
-    "id": 3,
+  {
+    "id": "popularDrinks",
     "name": "Popular Coffees",
+    "image": "/images/black.webp",
     "items": [
       {
         "id": 1,
@@ -142,4 +145,4 @@
       }
     ]
   }
-}
+]
