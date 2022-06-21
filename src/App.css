@@ -81,14 +81,35 @@ hr {
   align-items: center;
 }
 
-.product-head img{
+.product-head img {
   height: 250px;
   width: 250px;
-  
 }
 
-
-.product-head h1{
+.product-head h1 {
   color: #fff;
-  
+}
+
+.product-body img {
+  height: 500px;
+  width: 500px;
+  /* margin: 60px; */
+}
+
+.product-info {
+  padding-left: 40px;
+}
+
+.product-body {
+  display: flex;
+  padding: 60px;
+}
+
+.product-name {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.product-price {
+  font-size: 22px;
 }
