@@ -113,3 +113,60 @@ hr {
 .product-price {
   font-size: 22px;
 }
+
+.options-container {
+  display: flex;
+}
+
+.size-option {
+}
+
+.options-container input {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  display: flex;
+  width: 100px;
+  height: 50px;
+  border: 1px solid #ccc;
+  padding: 0;
+  cursor: pointer;
+}
+
+.options-container input[type="radio"] {
+  display: none;
+}
+
+.options-container label:hover {
+  background: #ddd;
+}
+
+.options-container input[type="radio"]:checked + label {
+  background: #eee ;
+}
+
+.app-button {
+  margin-top: 20px;
+  height: 50px;
+  width: 100%;
+  color: #fff;
+  border: #1f3933 solid;
+  background-color: #1f3933;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.app-button:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.app-button:active {
+  background-color: #eee;
+}
+
+.test {
+  background-color: red;
+}
