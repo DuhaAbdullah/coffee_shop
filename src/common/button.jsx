@@ -1,8 +1,11 @@
-function Button({ click, children, className }) {
-
+function Button(props) {
   return (
-    <button onClick={click} className={!className ? "app-button" : className}>
-      {children}
+    <button
+      onClick={props.onClick}
+      className={`app-button ${props.className}`}
+      disabled={props.disabled}
+    >
+      {props.children}
     </button>
   );
 }
