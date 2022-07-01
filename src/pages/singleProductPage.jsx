@@ -1,20 +1,23 @@
 import { useParams } from "react-router-dom";
 import NavBar from "../components/navBar";
-import categories from "../data.json";
+
 import { useLocation } from "react-router-dom";
 import Button from "../common/button";
 import { useState } from "react";
 
+import QuantityCounter from "../common/quantityCounter";
+
 function SingleProductPage() {
   const params = useParams();
   const location = useLocation();
-
   const [count, setCount] = useState(0);
 
   const { image, name, price, description, sizes } = location.state;
 
   function click(e) {
     console.log(e);
+    //product has id and we need to paass the id
+    //<Category link={cart} data={drink} name={name} image={image} />;
   }
 
   function handleSizeChange(e) {
@@ -32,7 +35,6 @@ function SingleProductPage() {
       setCount(count - 1);
     }
   }
-
   return (
     <div>
       <NavBar />
@@ -62,21 +64,18 @@ function SingleProductPage() {
           </div>
           <div className="counter-container">
             <p>Quantity:</p>
-            <div className="sub-counter-container">
-              <Button onClick={decrementCount} className="counter-button">
-                -
-              </Button>
-              <div className="results">{count}</div>
-              <Button onClick={incrementCount} className="counter-button">
-                +
-              </Button>
-            </div>
+            <QuantityCounter onIncrement={incrementCount} onDecrement={decrementCount} quantity={count}/>
           </div>
-          <Button  disabled={true} onClick={click}>Add to cart</Button>
+          <Button disabled={count > 0 ? false : true} onClick={click}>
+            Add to cart
+          </Button>
+          {count <= 0 ? (
+            <p className="warning-message">Please add some quantity!</p>
+          ) : null}
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default SingleProductPage;

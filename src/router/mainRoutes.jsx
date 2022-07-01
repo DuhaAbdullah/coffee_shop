@@ -2,9 +2,8 @@ import { Routes, Route, Link } from "react-router-dom";
 import Home from "../pages/home";
 import ProductsPage from "../pages/productsPage";
 import Menu from "../pages/menu";
-import categories from "../data.json";
-import Category from "../components/category";
 import SingleProductPage from "../pages/singleProductPage";
+import Cart from "../pages/cart";
 
 function MainRouter() {
   return (
@@ -16,6 +15,7 @@ function MainRouter() {
         path="/menu/:category/:productId"
         element={<SingleProductPage />}
       />
+      <Route path="/cart" element={<Cart/>}/>
     </Routes>
   );
 }
