@@ -13,9 +13,11 @@ function SingleProductPage() {
   const [count, setCount] = useState(0);
 
   const { image, name, price, description, sizes } = location.state;
+  console.log(location.state);
 
-  function click(e) {
+  function handleClickAddToCart(e) {
     console.log(e);
+    localStorage.setItem("cartItems","eeeeee");
     //product has id and we need to paass the id
     //<Category link={cart} data={drink} name={name} image={image} />;
   }
@@ -64,9 +66,16 @@ function SingleProductPage() {
           </div>
           <div className="counter-container">
             <p>Quantity:</p>
-            <QuantityCounter onIncrement={incrementCount} onDecrement={decrementCount} quantity={count}/>
+            <QuantityCounter
+              onIncrement={incrementCount}
+              onDecrement={decrementCount}
+              quantity={count}
+            />
           </div>
-          <Button disabled={count > 0 ? false : true} onClick={click}>
+          <Button
+            disabled={count > 0 ? false : true}
+            onClick={handleClickAddToCart}
+          >
             Add to cart
           </Button>
           {count <= 0 ? (
