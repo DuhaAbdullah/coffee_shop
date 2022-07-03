@@ -8,18 +8,21 @@ import { useState } from "react";
 import QuantityCounter from "../common/quantityCounter";
 
 function SingleProductPage() {
-  const params = useParams();
   const location = useLocation();
   const [count, setCount] = useState(0);
 
   const { image, name, price, description, sizes } = location.state;
-  console.log(location.state);
 
   function handleClickAddToCart(e) {
-    console.log(e);
-    localStorage.setItem("cartItems","eeeeee");
-    //product has id and we need to paass the id
-    //<Category link={cart} data={drink} name={name} image={image} />;
+    const cartItems = localStorage.getItem("cartItems");
+
+    if (cartItems) {
+      const convertedItems = JSON.parse(cartItems);
+      convertedItems.push(location.state);
+      localStorage.setItem("cartItems", JSON.stringify(convertedItems));
+    } else {
+      localStorage.setItem("cartItems", JSON.stringify([location.state]));
+    }
   }
 
   function handleSizeChange(e) {

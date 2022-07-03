@@ -8,6 +8,10 @@ function NavBar() {
     setName("Clicked!");
   }
 
+  const cartItems = localStorage.getItem("cartItems")
+  const items = JSON.parse(cartItems)
+  
+
   return (
     <div className="bar">
       <div className="logo-container">
@@ -18,7 +22,7 @@ function NavBar() {
         <p className="cart-name">CART</p>
         <CartIcon />
         <div className="cart-badge">
-          <p>0</p>
+          <p>{items.length}</p>
         </div>
       </Link>
     </div>

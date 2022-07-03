@@ -4,6 +4,7 @@ function Button(props) {
       onClick={props.onClick}
       className={`app-button ${props.className}`}
       disabled={props.disabled}
+      id={props.id}
     >
       {props.children}
     </button>

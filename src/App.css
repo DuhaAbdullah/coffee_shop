@@ -1,6 +1,7 @@
 body {
   margin: 0;
   padding: 0;
+  color: #1f3933;
 }
 
 h1,
@@ -351,4 +352,33 @@ td {
 .checkout-button-container {
   display: flex;
   justify-content: flex-end;
+}
+
+.delete-cross {
+  color: #ccc;
+}
+
+.delete-cross svg {
+  cursor: pointer;
+}
+
+.coupon-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.coupon {
+  width: 20%;
+}
+
+.coupon label {
+  font-weight: 700;
+  margin-right: 5px;
+  font-size: 10px;
+}
+
+.coupon input {
+  width: 63%;
+  margin-top: 15px;
+  border-radius: 5px;
 }
