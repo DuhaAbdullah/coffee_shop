@@ -1,30 +1,50 @@
 import QuantityCounter from "../common/quantityCounter";
 import NavBar from "../components/navBar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "../common/button";
 import CrossIcon from "../icons/crossIcons";
 
 function Cart() {
-  const [count, setCount] = useState(0);
+  const [items, setItems] = useState([]);
 
-  const cartItems = localStorage.getItem("cartItems");
-  const items = JSON.parse(cartItems);
+  const sortedItems = items.sort((a, b) => {
+    return a.id - b.id;
+  });
 
-  function incrementCount(e) {
+  // console.log(sortedItems);
+
+  const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+  useEffect(() => {
+    setItems(cartItems);
+  }, []);
+
+  function handleIncrement(e, quantity) {
     const { id } = e.target;
-    if (count < 10) {
-      setCount(count + 1);
-    }
+    const filteredItems = sortedItems.filter((item) => item.id !== Number(id));
+    const clickedItem = sortedItems.find((item) => item.id === Number(id));
+    console.log(clickedItem)
+    setItems([
+      ...filteredItems,
+      {
+        ...clickedItem,
+        quantity: quantity,
+      },
+    ]);
   }
 
-  function decrementCount(e) {
+  function handleDecrement(e, quantity) {
     const { id } = e.target;
-    if (count > 0) {
-      setCount(count - 1);
-    }
+    const filteredItems = sortedItems.filter((item) => item.id !== Number(id));
+    const clickedItem = sortedItems.find((item) => item.id === Number(id));
+    setItems([
+      ...filteredItems,
+      {
+        ...clickedItem,
+        quantity: quantity,
+      },
+    ]);
   }
-
-  // console.log(data)
 
   return (
     <div>
@@ -43,23 +63,26 @@ function Cart() {
             </tr>
           </thead>
           <tbody>
-            {items.map((item) => {
+            {sortedItems.map((item) => {
               return (
                 <tr key={item.id}>
                   <td>
                     <img src={item.image} />
+                    <p>{item.name}</p>
                   </td>
                   <td>Rs. {item.price}</td>
                   <td>
                     <QuantityCounter
                       className="cart-quantity-counter"
-                      onIncrement={incrementCount}
-                      onDecrement={decrementCount}
-                      quantity={count}
+                      onIncrement={handleIncrement}
+                      onDecrement={handleDecrement}
                       id={item.id}
+                      defaultQuantity={item.quantity}
                     />
                   </td>
-                  <td>$345</td>
+                  <td>
+                    ${item.quantity ? item.price * item.quantity : item.price}
+                  </td>
                   <td className="delete-cross">
                     <CrossIcon />
                   </td>
@@ -77,7 +100,7 @@ function Cart() {
         <div className="cart-total">
           <div className="sub-total">
             <h4>Sub Total</h4>
-            <p>$2234</p>
+            <p>Rs.{}</p>
           </div>
           <div className="tax">
             <h4>Tax</h4>

@@ -1,27 +1,31 @@
-import { useParams } from "react-router-dom";
 import NavBar from "../components/navBar";
-
 import { useLocation } from "react-router-dom";
 import Button from "../common/button";
 import { useState } from "react";
-
 import QuantityCounter from "../common/quantityCounter";
 
 function SingleProductPage() {
   const location = useLocation();
-  const [count, setCount] = useState(0);
-
+  const [count, setCount] = useState(1);
+  const [items, setItems] = useState([]);
   const { image, name, price, description, sizes } = location.state;
 
   function handleClickAddToCart(e) {
     const cartItems = localStorage.getItem("cartItems");
+    const convertedItems = JSON.parse(cartItems);
+    //console.log(location.state);
+    // const itemExists = convertedItems.find((item) => )
+    // const id = localStorage.getItem("id");
+    // console.log(location.state);
 
     if (cartItems) {
-      const convertedItems = JSON.parse(cartItems);
-      convertedItems.push(location.state);
+      convertedItems.push({ ...location.state, quantity: count });
       localStorage.setItem("cartItems", JSON.stringify(convertedItems));
     } else {
-      localStorage.setItem("cartItems", JSON.stringify([location.state]));
+      localStorage.setItem(
+        "cartItems",
+        JSON.stringify([{ ...location.state, quantity: count }])
+      );
     }
   }
 
@@ -29,17 +33,14 @@ function SingleProductPage() {
     console.log(e.target.value);
   }
 
-  function incrementCount(e) {
-    if (count < 10) {
-      setCount(count + 1);
-    }
+  function handleIncrement(e, quantity) {
+    setCount(quantity);
   }
 
-  function decrementCount(e) {
-    if (count > 0) {
-      setCount(count - 1);
-    }
+  function handleDecrement(e, quantity) {
+    setCount(quantity);
   }
+
   return (
     <div>
       <NavBar />
@@ -70,20 +71,19 @@ function SingleProductPage() {
           <div className="counter-container">
             <p>Quantity:</p>
             <QuantityCounter
-              onIncrement={incrementCount}
-              onDecrement={decrementCount}
-              quantity={count}
+              onIncrement={handleIncrement}
+              onDecrement={handleDecrement}
             />
           </div>
           <Button
-            disabled={count > 0 ? false : true}
+            // disabled={count >= 1 ? false : true}
             onClick={handleClickAddToCart}
           >
             Add to cart
           </Button>
-          {count <= 0 ? (
+          {/* {count < 1 ? (
             <p className="warning-message">Please add some quantity!</p>
-          ) : null}
+          ) : null} */}
         </div>
       </div>
     </div>

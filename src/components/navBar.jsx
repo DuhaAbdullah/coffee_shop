@@ -22,7 +22,7 @@ function NavBar() {
         <p className="cart-name">CART</p>
         <CartIcon />
         <div className="cart-badge">
-          <p>{items.length}</p>
+          <p>{!items ? 0 : items.length}</p>
         </div>
       </Link>
     </div>
