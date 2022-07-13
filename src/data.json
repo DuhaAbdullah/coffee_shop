@@ -17,7 +17,8 @@
         "image": "/images/iced-mocha.webp",
         "price": 12,
         "currency": "Rs.",
-        "sizes": ["small", "medium", "large"]
+        "sizes": ["small", "medium", "large"],
+        "selectedSize": ""
       },
       {
         "id": 2,
@@ -27,7 +28,8 @@
         "image": "/images/vanilla-cold-brew.webp",
         "price": 14,
         "currency": "Rs.",
-        "sizes": ["small", "medium", "large"]
+        "sizes": ["small", "medium", "large"],
+        "selectedSize": ""
       },
       {
         "id": 3,
@@ -37,7 +39,8 @@
         "image": "/images/black.webp",
         "price": 14,
         "currency": "Rs.",
-        "sizes": ["small", "medium", "large"]
+        "sizes": ["small", "medium", "large"],
+        "selectedSize": ""
       },
       {
         "id": 4,
@@ -52,7 +55,8 @@
         "image": "/images/chocolate-brew.webp",
         "price": 16,
         "currency": "Rs.",
-        "sizes": ["small", "medium", "large"]
+        "sizes": ["small", "medium", "large"],
+        "selectedSize": ""
       }
     ]
   },
@@ -69,7 +73,8 @@
         "image": "/images/hot-espresso.webp",
         "price": 10,
         "currency": "Rs.",
-        "sizes": ["small", "medium", "large"]
+        "sizes": ["small", "medium", "large"],
+        "selectedSize": ""
       },
       {
         "id": 6,
@@ -79,7 +84,8 @@
         "image": "/images/flate-white.webp",
         "price": 12,
         "currency": "Rs.",
-        "sizes": ["small", "medium", "large"]
+        "sizes": ["small", "medium", "large"],
+        "selectedSize": ""
       },
       {
         "id": 7,
@@ -89,7 +95,8 @@
         "image": "/images/black.webp",
         "price": 14,
         "currency": "Rs.",
-        "sizes": ["small", "medium", "large"]
+        "sizes": ["small", "medium", "large"],
+        "selectedSize": ""
       },
       {
         "id": 8,
@@ -99,7 +106,8 @@
         "image": "/images/caramel-macchiato.webp",
         "price": 14,
         "currency": "Rs.",
-        "sizes": ["small", "medium", "large"]
+        "sizes": ["small", "medium", "large"],
+        "selectedSize": ""
       },
       {
         "id": 9,
@@ -109,7 +117,8 @@
         "image": "/images/mocha.webp",
         "price": 14,
         "currency": "Rs.",
-        "sizes": ["small", "medium", "large"]
+        "sizes": ["small", "medium", "large"],
+        "selectedSize": ""
       }
     ]
   },
@@ -131,7 +140,8 @@
         "image": "/images/mocha.webp",
         "price": 16,
         "currency": "Rs.",
-        "sizes": ["small", "medium", "large"]
+        "sizes": ["small", "medium", "large"],
+        "selectedSize": ""
       },
       {
         "id": 11,
@@ -141,7 +151,8 @@
         "image": "/images/chocolate-brew.webp",
         "price": 14,
         "currency": "Rs.",
-        "sizes": ["small", "medium", "large"]
+        "sizes": ["small", "medium", "large"],
+        "selectedSize": ""
       }
     ]
   }

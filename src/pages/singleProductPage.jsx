@@ -3,34 +3,81 @@ import { useLocation } from "react-router-dom";
 import Button from "../common/button";
 import { useState } from "react";
 import QuantityCounter from "../common/quantityCounter";
+import Input from "../common/input";
+
 
 function SingleProductPage() {
   const location = useLocation();
   const [count, setCount] = useState(1);
-  const [items, setItems] = useState([]);
   const { image, name, price, description, sizes } = location.state;
 
   function handleClickAddToCart(e) {
     const cartItems = localStorage.getItem("cartItems");
-    const convertedItems = JSON.parse(cartItems);
-    //console.log(location.state);
-    // const itemExists = convertedItems.find((item) => )
-    // const id = localStorage.getItem("id");
-    // console.log(location.state);
+    const convertedItems = JSON.parse(cartItems) || [];
+    const currentItem = convertedItems.find(
+      (item) => item.id === location.state.id
+    );
 
-    if (cartItems) {
-      convertedItems.push({ ...location.state, quantity: count });
-      localStorage.setItem("cartItems", JSON.stringify(convertedItems));
-    } else {
+    if (!convertedItems.length) {
       localStorage.setItem(
         "cartItems",
         JSON.stringify([{ ...location.state, quantity: count }])
       );
+    } else {
+      if (currentItem) {
+        const filtered = convertedItems.map((item) => {
+          if (item.id === currentItem.id) {
+            return { ...currentItem, quantity: currentItem.quantity + count };
+          } else {
+            return item;
+          }
+        });
+        localStorage.setItem("cartItems", JSON.stringify(filtered));
+      } else {
+        localStorage.setItem(
+          "cartItems",
+          JSON.stringify([
+            ...convertedItems,
+            { ...location.state, quantity: count },
+          ])
+        );
+      }
     }
   }
 
   function handleSizeChange(e) {
-    console.log(e.target.value);
+    const { value } = e.target;
+    const cartItems = localStorage.getItem("cartItems");
+    const convertedItems = JSON.parse(cartItems) || [];
+    const currentItem = convertedItems.find(
+      (item) => item.id === location.state.id
+    );
+
+    if (!convertedItems.length) {
+      localStorage.setItem(
+        "cartItems",
+        JSON.stringify([{ ...location.state, selectedSize: value }])
+      );
+    } else {
+      if (currentItem) {
+        const filtered = convertedItems.map((item) => {
+          if (item.id === currentItem.id) {
+            return { ...currentItem, selectedSize: value };
+          } else {
+            return item;
+          }
+        });
+        localStorage.setItem("cartItems", JSON.stringify(filtered));
+      } else {
+        localStorage.setItem(
+          "cartItems",
+          JSON.stringify([
+            ...convertedItems,
+            { ...location.state, selectedSize: value },
+          ])
+        );
+      }
+    }
   }
 
   function handleIncrement(e, quantity) {
@@ -62,7 +109,7 @@ function SingleProductPage() {
             <form onChange={handleSizeChange}>
               {sizes.map((size) => (
                 <div key={size} className="size-option">
-                  <input type="radio" name="size" id={size} value={size} />
+                  <Input type="radio" name="size" id={size} value={size} />
                   <label htmlFor={size}>{size.toUpperCase()}</label>
                 </div>
               ))}
@@ -71,11 +118,13 @@ function SingleProductPage() {
           <div className="counter-container">
             <p>Quantity:</p>
             <QuantityCounter
+              className="cart-quantity-counter"
               onIncrement={handleIncrement}
               onDecrement={handleDecrement}
             />
           </div>
           <Button
+           className="click-add-to-cart"
             // disabled={count >= 1 ? false : true}
             onClick={handleClickAddToCart}
           >

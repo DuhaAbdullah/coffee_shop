@@ -9,22 +9,22 @@ function QuantityCounter(props) {
   function handleIncrement(e) {
     if (count < 10) {
       setCount(count + 1);
+      props.onIncrement && props.onIncrement(e, count + 1);
     }
-    props.onIncrement && props.onIncrement(e, count + 1);
   }
 
   function handleDecrement(e) {
     if (count > 1) {
       setCount(count - 1);
+      props.onDecrement && props.onDecrement(e, count - 1);
     }
-    props.onDecrement && props.onDecrement(e, count - 1);
   }
 
   return (
     <div className={`sub-counter-container ${props.className}`}>
       <Button
         onClick={handleDecrement}
-        className="counter-button"
+        className="counter-button button-left"
         id={props.id}
       >
         -
@@ -33,7 +33,7 @@ function QuantityCounter(props) {
       <div className="results">{count}</div>
       <Button
         onClick={handleIncrement}
-        className="counter-button"
+        className="counter-button button-right"
         id={props.id}
       >
         +
