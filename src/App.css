@@ -192,7 +192,15 @@ hr {
   margin-top: 10px;
 }
 
-.options-container input {
+.options-container form {
+  display: flex;
+}
+
+.size-option {
+  display: flex;
+}
+
+.size-option input {
   text-align: center;
   align-items: center;
   justify-content: center;
@@ -205,11 +213,11 @@ hr {
   cursor: pointer;
 }
 
-.options-container input[type="radio"] {
+.size-option input[type="radio"] {
   display: none;
 }
 
-.options-container label {
+.size-option label {
   width: 100px;
   padding: 10px;
   border: 1px solid #ccc;
@@ -219,21 +227,13 @@ hr {
   border-radius: 8px;
 }
 
-.options-container label:hover {
+.size-option label:hover {
   border: 1px solid #ccc;
 }
 
-.options-container input[type="radio"]:checked + label {
+.size-option input[type="radio"]:checked + label {
   background-color: #eee;
   border: 2px solid #1f3933;
-}
-
-.options-container form {
-  display: flex;
-}
-
-.size-option {
-  display: flex;
 }
 
 .app-button {
@@ -401,14 +401,14 @@ td {
   font-size: 10px;
 }
 
-.coupon input {
+.coupon-input {
   width: 100%;
   border: 1px solid #898989;
   border-radius: 5px;
   height: 30px;
 }
 
-.coupon input:focus {
+.coupon-input:focus {
   background: #eee;
   outline-color: #62b6a2;
 }
@@ -453,6 +453,7 @@ td {
 
 .click-add-to-cart {
   font-size: 20px;
+  border-radius: 8px;
 }
 
 .shipping-information-container {
@@ -482,17 +483,9 @@ td {
   flex-wrap: wrap;
 }
 
-.inputs-name-wrapper input {
+.input-field {
   width: 35%;
-  border: 1px solid #898989;
   margin: 10px;
-  border-radius: 5px;
-  height: 30px;
-}
-
-.inputs-name-wrapper input:focus {
-  background: #eee;
-  outline-color: #62b6a2;
 }
 
 .inputs-name-wrapper select {
@@ -505,4 +498,26 @@ td {
 
 .inputs-name-wrapper select:not(:focus) {
   color: #898989;
+}
+
+.first-option {
+  width: 35%;
+  margin: 10px;
+  border: 1px solid #898989;
+  border-radius: 5px;
+  height: 30px;
+}
+
+.first-option:focus {
+  background: #eee;
+  outline-color: #62b6a2;
+}
+
+.pickups-buttons p {
+  text-align: center;
+}
+
+.pickups-options {
+  display: flex;
+  justify-content: center;
 }

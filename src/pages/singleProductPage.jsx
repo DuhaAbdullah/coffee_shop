@@ -3,8 +3,8 @@ import { useLocation } from "react-router-dom";
 import Button from "../common/button";
 import { useState } from "react";
 import QuantityCounter from "../common/quantityCounter";
-import Input from "../common/input";
-
+import Input from "../common/textField";
+import RadioButton from "../common/radioButton";
 
 function SingleProductPage() {
   const location = useLocation();
@@ -108,10 +108,13 @@ function SingleProductPage() {
           <div className="options-container">
             <form onChange={handleSizeChange}>
               {sizes.map((size) => (
-                <div key={size} className="size-option">
-                  <Input type="radio" name="size" id={size} value={size} />
-                  <label htmlFor={size}>{size.toUpperCase()}</label>
-                </div>
+                <RadioButton
+                  key={size}
+                  name="size"
+                  id={size}
+                  value={size}
+                  label={size}
+                />
               ))}
             </form>
           </div>
@@ -124,7 +127,7 @@ function SingleProductPage() {
             />
           </div>
           <Button
-           className="click-add-to-cart"
+            className="click-add-to-cart"
             // disabled={count >= 1 ? false : true}
             onClick={handleClickAddToCart}
           >

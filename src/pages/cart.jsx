@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 import Button from "../common/button";
 import CrossIcon from "../icons/crossIcons";
 import cities from "../cities.json";
-import Input from "../common/input";
+import TextField from "../common/textField";
+import RadioButton from "../common/radioButton";
 
 const coupons = [
   { id: 1, phrase: "dis15", discount: 0.15 },
@@ -116,8 +117,8 @@ function Cart() {
     }
   }
 
-  function handlePickUpOption(e){
-
+  function handleRadioClick(e) {
+    console.log(e.target.value);
   }
 
   return (
@@ -182,7 +183,7 @@ function Cart() {
           <div className="coupon">
             <div className="coupon-wrapper">
               <label htmlFor="coupon">Coupon: </label>
-              <Input
+              <TextField
                 type="text"
                 name="coupon"
                 id="coupon"
@@ -224,43 +225,39 @@ function Cart() {
         </div>
         <form className="shipping-information">
           <div className="inputs-name-wrapper">
-            <Input
-              id="first-name"
-              name="first-name"
-              type="text"
-              placeholder="First Name"
-            />
-            <Input
-              id="last-name"
-              name="last-name"
-              type="text"
-              placeholder="Last Name"
-            />
-            <Input
-              id="address"
-              name="address"
-              type="text"
-              placeholder="Address"
-            />
-            <Input id="phone" name="phone" type="text" placeholder="Phone" />
+            <TextField placeholder="First Name" className="input-field" />
+            <TextField placeholder="Last Name" className="input-field" />
+            <TextField placeholder="Address" className="input-field" />
+            <TextField placeholder="Phone" className="input-field" />
             <select className="first-option">
-              <option value="" disabled selected hidden>
+              <option value="" disabled hidden>
                 City
               </option>
               {cities.map((city) => (
-                <option value="city">{city}</option>
+                <option key={city} value="city">
+                  {city}
+                </option>
               ))}
             </select>
-            <Input
-              id="postal-code"
-              name="postal-code"
-              type="text"
-              placeholder="Postal Code "
-            />
+            <TextField placeholder="Postal Code " className="input-field" />
           </div>
         </form>
-        <form onChange={handlePickUpOption}>
-         
+      </div>
+      <div className="pickups-buttons">
+        <p>Please choose a pickup location:</p>
+        <form className="pickups-options" onChange={handleRadioClick}>
+          <RadioButton
+            name="pickup-options"
+            id="pickup"
+            label="Store pickup"
+            value="pickup"
+          />
+          <RadioButton
+            name="pickup-options"
+            id="delivery"
+            label="Delivery"
+            value="delivery"
+          />
         </form>
       </div>
     </div>
