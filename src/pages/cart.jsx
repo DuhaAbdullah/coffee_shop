@@ -6,6 +6,7 @@ import CrossIcon from "../icons/crossIcons";
 import cities from "../cities.json";
 import TextField from "../common/textField";
 import RadioButton from "../common/radioButton";
+import { useNavigate } from "react-router-dom";
 
 const coupons = [
   { id: 1, phrase: "dis15", discount: 0.15 },
@@ -21,12 +22,34 @@ function Cart() {
     isApplied: false,
     isValid: true,
   });
+  
+   
+  const [order, setOrder] = useState({
+    orderId: "",
+    products: [],
+    shippingInfo: {
+      firstName: "",
+      lastName: "",
+      address: "",
+      phone: 0,
+      city: "",
+      postalCode: "",
+      pickupLocation: "",
+    },
+  });
+  const [values, setValues] = useState({ isEmpty: false });
+ 
+  const navigate = useNavigate();
 
   const sortedItems = items.sort((a, b) => {
     return a.id - b.id;
   });
 
   const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+  !cartItems.length && (
+    <p className="warning-message">Please add some products!</p>
+  );
+
 
   const itemsTotal = sortedItems.map((item) => item.price * item.quantity);
   const subTotal = itemsTotal.reduce(
@@ -37,6 +60,7 @@ function Cart() {
 
   useEffect(() => {
     setItems(cartItems);
+    setOrder({ ...order, products: cartItems });
   }, []);
 
   useEffect(() => {
@@ -56,32 +80,35 @@ function Cart() {
 
   function handleIncrement(e, quantity) {
     const { id } = e.target;
-    const clickedItem = sortedItems.map((item) => {
+    const editedItem = sortedItems.map((item) => {
       if (item.id === Number(id)) {
         return { ...item, quantity: quantity };
       } else {
         return item;
       }
     });
-    setItems(clickedItem);
+    setItems(editedItem);
+    setOrder(editedItem);
   }
 
   function handleDecrement(e, quantity) {
     const { id } = e.target;
-    const clickedItem = sortedItems.map((item) => {
+    const editedItem = sortedItems.map((item) => {
       if (item.id === Number(id)) {
         return { ...item, quantity: quantity };
       } else {
         return item;
       }
     });
-    setItems(clickedItem);
-    localStorage.setItem("cartItems", JSON.stringify(clickedItem));
+    setItems(editedItem);
+    setOrder(editedItem);
+    localStorage.setItem("cartItems", JSON.stringify(editedItem)); 
   }
 
   function handleDelete(e) {
     const { id } = e.target;
-    const filterItems = sortedItems.filter((item) => String(item.id) !== id);
+    console.log(id)
+    const filterItems = sortedItems.filter((item) => String(`${item.id}${item.selectedSize}`) !== id);
     setItems(filterItems);
     localStorage.setItem("cartItems", JSON.stringify(filterItems));
   }
@@ -117,8 +144,24 @@ function Cart() {
     }
   }
 
-  function handleRadioClick(e) {
-    console.log(e.target.value);
+  function handleTextField(e) {
+    const { value, name } = e.target;
+    setOrder({
+      ...order,
+      shippingInfo: { ...order.shippingInfo, [name]: value },
+    });
+    if({...order.shippingInfo, [name]: value }){
+      setValues({...values , isEmpty: true});
+    }
+
+  }
+
+  function handleCheckout(e) {
+    setOrder({
+      ...order,
+      orderId: String(Math.floor(Math.random() * 899999 + 100000)),
+    });
+    navigate("/thankyou");
   }
 
   return (
@@ -140,7 +183,7 @@ function Cart() {
           <tbody>
             {sortedItems.map((item) => {
               return (
-                <tr key={item.id}>
+                <tr key={`${item.id}${item.selectedSize}`}>
                   <td>
                     <img src={item.image} />
                     <p>{item.name}</p>
@@ -170,7 +213,7 @@ function Cart() {
                       <div
                         className="delete-icon-layer"
                         onClick={handleDelete}
-                        id={item.id}
+                        id={`${item.id}${item.selectedSize}`}
                       ></div>
                     </div>
                   </td>
@@ -179,6 +222,11 @@ function Cart() {
             })}
           </tbody>
         </table>
+        <div className="warning-message-container">
+          {!cartItems.length && (
+            <p className="warning-message">PLEASE ADD SOME PRODUCTS!</p>
+          )}
+        </div>
         <div className="coupon-container">
           <div className="coupon">
             <div className="coupon-wrapper">
@@ -225,41 +273,82 @@ function Cart() {
         </div>
         <form className="shipping-information">
           <div className="inputs-name-wrapper">
-            <TextField placeholder="First Name" className="input-field" />
-            <TextField placeholder="Last Name" className="input-field" />
-            <TextField placeholder="Address" className="input-field" />
-            <TextField placeholder="Phone" className="input-field" />
-            <select className="first-option">
+            <TextField
+              placeholder="First Name"
+              className="input-field"
+              onChange={handleTextField}
+              name="firstName"
+            />
+            <TextField
+              placeholder="Last Name"
+              className="input-field"
+              onChange={handleTextField}
+              name="lastName"
+            />
+            <TextField
+              placeholder="Address"
+              className="input-field"
+              onChange={handleTextField}
+              name="address"
+            />
+            <TextField
+              placeholder="Phone"
+              className="input-field"
+              onChange={handleTextField}
+              name="phone"
+            />
+            <select
+              className="first-option"
+              name="city"
+              onChange={handleTextField}
+            >
               <option value="" disabled hidden>
                 City
               </option>
               {cities.map((city) => (
-                <option key={city} value="city">
+                <option key={city} value={city}>
                   {city}
                 </option>
               ))}
             </select>
-            <TextField placeholder="Postal Code " className="input-field" />
+            <TextField
+              placeholder="Postal Code "
+              className="input-field"
+              onChange={handleTextField}
+              name="postalCode"
+            />
           </div>
         </form>
       </div>
       <div className="pickups-buttons">
-        <p>Please choose a pickup location:</p>
-        <form className="pickups-options" onChange={handleRadioClick}>
+        <h4>Please choose a pickup location:</h4>
+        <form className="pickups-options" onChange={handleTextField}>
           <RadioButton
-            name="pickup-options"
+            name="pickupLocation"
             id="pickup"
             label="Store pickup"
             value="pickup"
           />
           <RadioButton
-            name="pickup-options"
+            name="pickupLocation"
             id="delivery"
             label="Delivery"
             value="delivery"
           />
         </form>
       </div>
+      <div className="checkout-button-container">
+        <Button
+          className="checkout-button"
+          onClick={handleCheckout}
+          disabled={!values.isEmpty ? true : false}
+        >
+          Checkout
+        </Button>
+      </div>
+      {!values.isEmpty ? (
+        <p className="warning-message">Please fill the input !</p>
+      ) : null}
     </div>
   );
 }

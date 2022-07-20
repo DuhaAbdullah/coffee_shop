@@ -4,6 +4,7 @@ import ProductsPage from "../pages/productsPage";
 import Menu from "../pages/menu";
 import SingleProductPage from "../pages/singleProductPage";
 import Cart from "../pages/cart";
+import ThankYou from "../pages/thankyou";
 
 function MainRouter() {
   return (
@@ -15,7 +16,8 @@ function MainRouter() {
         path="/menu/:category/:productId"
         element={<SingleProductPage />}
       />
-      <Route path="/cart" element={<Cart/>}/>
+      <Route path="/cart" element={<Cart />} />
+      <Route path="/thankyou" element={<ThankYou />} />
     </Routes>
   );
 }

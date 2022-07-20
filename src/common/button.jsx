@@ -2,7 +2,7 @@ function Button(props) {
   return (
     <button
       onClick={props.onClick}
-      className={`app-button ${props.className}`}
+      className={`app-button ${props.className || ""}`}
       disabled={props.disabled}
       id={props.id}
     >

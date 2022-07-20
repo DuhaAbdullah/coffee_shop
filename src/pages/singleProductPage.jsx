@@ -5,79 +5,75 @@ import { useState } from "react";
 import QuantityCounter from "../common/quantityCounter";
 import Input from "../common/textField";
 import RadioButton from "../common/radioButton";
+import { useEffect } from "react";
 
 function SingleProductPage() {
   const location = useLocation();
   const [count, setCount] = useState(1);
-  const { image, name, price, description, sizes } = location.state;
+  const [productData, setProductData] = useState({ sizes: [] });
+  const [isSelected, setIsSelected] = useState(true);
+
+  const { id, image, name, price, description, sizes, selectedSize } =
+    productData;
+
+  useEffect(() => {
+    setProductData(location.state);
+  }, []);
 
   function handleClickAddToCart(e) {
     const cartItems = localStorage.getItem("cartItems");
     const convertedItems = JSON.parse(cartItems) || [];
     const currentItem = convertedItems.find(
-      (item) => item.id === location.state.id
+      (item) => item.id === id && selectedSize === item.selectedSize
     );
 
-    if (!convertedItems.length) {
-      localStorage.setItem(
-        "cartItems",
-        JSON.stringify([{ ...location.state, quantity: count }])
-      );
+    // console.log(filteredData);
+
+    if (!selectedSize) {
+      setIsSelected(false);
     } else {
-      if (currentItem) {
-        const filtered = convertedItems.map((item) => {
-          if (item.id === currentItem.id) {
-            return { ...currentItem, quantity: currentItem.quantity + count };
-          } else {
-            return item;
-          }
-        });
-        localStorage.setItem("cartItems", JSON.stringify(filtered));
-      } else {
+      if (!convertedItems.length) {
+        console.log("cart is empty length 0");
         localStorage.setItem(
           "cartItems",
-          JSON.stringify([
-            ...convertedItems,
-            { ...location.state, quantity: count },
-          ])
+          JSON.stringify([{ ...productData, quantity: count }])
         );
+      } else {
+        if (currentItem) {
+          const filteredData = convertedItems.filter((item) => item.id === id);
+          const filteredSizes = filteredData.filter(
+            (item) => item.selectedSize !== selectedSize
+          );
+          const restItems = convertedItems.filter(
+            (item) => item.id !== currentItem.id
+          );
+
+          localStorage.setItem(
+            "cartItems",
+            JSON.stringify([
+              ...restItems,
+              ...filteredSizes,
+              { ...currentItem, quantity: count + currentItem.quantity },
+            ])
+          );
+        } else {
+          localStorage.setItem(
+            "cartItems",
+            JSON.stringify([
+              ...convertedItems,
+              { ...productData, quantity: count },
+            ])
+          );
+        }
       }
     }
   }
 
   function handleSizeChange(e) {
     const { value } = e.target;
-    const cartItems = localStorage.getItem("cartItems");
-    const convertedItems = JSON.parse(cartItems) || [];
-    const currentItem = convertedItems.find(
-      (item) => item.id === location.state.id
-    );
 
-    if (!convertedItems.length) {
-      localStorage.setItem(
-        "cartItems",
-        JSON.stringify([{ ...location.state, selectedSize: value }])
-      );
-    } else {
-      if (currentItem) {
-        const filtered = convertedItems.map((item) => {
-          if (item.id === currentItem.id) {
-            return { ...currentItem, selectedSize: value };
-          } else {
-            return item;
-          }
-        });
-        localStorage.setItem("cartItems", JSON.stringify(filtered));
-      } else {
-        localStorage.setItem(
-          "cartItems",
-          JSON.stringify([
-            ...convertedItems,
-            { ...location.state, selectedSize: value },
-          ])
-        );
-      }
-    }
+    setProductData({ ...productData, selectedSize: value });
+    setIsSelected(true);
   }
 
   function handleIncrement(e, quantity) {
@@ -126,16 +122,12 @@ function SingleProductPage() {
               onDecrement={handleDecrement}
             />
           </div>
-          <Button
-            className="click-add-to-cart"
-            // disabled={count >= 1 ? false : true}
-            onClick={handleClickAddToCart}
-          >
+          <Button className="click-add-to-cart" onClick={handleClickAddToCart}>
             Add to cart
           </Button>
-          {/* {count < 1 ? (
-            <p className="warning-message">Please add some quantity!</p>
-          ) : null} */}
+          {!isSelected ? (
+            <p className="warning-message">Please select a size !</p>
+          ) : null}
         </div>
       </div>
     </div>
