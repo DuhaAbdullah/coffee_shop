@@ -152,8 +152,7 @@ hr {
   width: 250px;
 }
 
-.product-head 
-{
+.product-head {
   color: #fff;
 }
 
@@ -304,7 +303,7 @@ hr {
   font-size: 15px;
 }
 
-.warning-message-container{
+.warning-message-container {
   text-align: center;
 }
 
@@ -343,12 +342,6 @@ td {
   height: 70px;
   width: 70px;
 }
-
-/* .cart-quantity-counter {
-  width: 120px;
-  margin: 0 auto;
-  font-size: 15px;
-} */
 
 .cart-total {
   display: flex;
@@ -406,16 +399,27 @@ td {
   font-size: 10px;
 }
 
+.input-container {
+  width: 35%;
+  margin: 5px;
+}
+
 .coupon-input {
   width: 100%;
   border: 1px solid #898989;
   border-radius: 5px;
   height: 30px;
+  box-sizing: border-box;
 }
 
 .coupon-input:focus {
   background: #eee;
   outline-color: #62b6a2;
+}
+
+.textfield-error {
+  font-size: 14px;
+  color: rgb(223, 59, 59);
 }
 
 .coupon-wrapper {
@@ -488,26 +492,14 @@ td {
   flex-wrap: wrap;
 }
 
-.input-field {
+.select-container {
   width: 35%;
-  margin: 10px;
-}
-
-.inputs-name-wrapper select {
-  width: 35%;
-  border: 1px solid #898989;
-  margin: 10px;
-  border-radius: 5px;
-  height: 30px;
-}
-
-.inputs-name-wrapper select:not(:focus) {
-  color: #898989;
+  margin: 5px;
 }
 
 .first-option {
-  width: 35%;
-  margin: 10px;
+  display: block;
+  width: 100%;
   border: 1px solid #898989;
   border-radius: 5px;
   height: 30px;
@@ -518,7 +510,11 @@ td {
   outline-color: #62b6a2;
 }
 
-.pickups-buttons h4 {
+.first-option:not(:focus) {
+  color: #898989;
+}
+
+.pickups-buttons h4{
   text-align: center;
   margin-bottom: 5px;
 }
@@ -581,4 +577,9 @@ td {
 .home-button {
   border-radius: 30px !important;
   width: 200px;
+}
+
+.error-label-container{
+  display: flex;
+  justify-content: center;
 }

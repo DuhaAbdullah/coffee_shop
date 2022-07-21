@@ -22,8 +22,16 @@ function Cart() {
     isApplied: false,
     isValid: true,
   });
-  
-   
+  const [inputErrors, setInputError] = useState({
+    firstName: { isValid: true, message: "First name is empty" },
+    lastName: { isValid: true, message: "Last name is empty" },
+    address: { isValid: true, message: "Address is empty" },
+    phone: { isValid: true, message: "Phone is empty" },
+    city: { isValid: true, message: "City is empty" },
+    postalCode: { isValid: true, message: "Postalcode is empty" },
+    pickupLocation: { isValid: true, message: "Pickup location not selected" },
+  });
+
   const [order, setOrder] = useState({
     orderId: "",
     products: [],
@@ -37,8 +45,7 @@ function Cart() {
       pickupLocation: "",
     },
   });
-  const [values, setValues] = useState({ isEmpty: false });
- 
+
   const navigate = useNavigate();
 
   const sortedItems = items.sort((a, b) => {
@@ -49,7 +56,6 @@ function Cart() {
   !cartItems.length && (
     <p className="warning-message">Please add some products!</p>
   );
-
 
   const itemsTotal = sortedItems.map((item) => item.price * item.quantity);
   const subTotal = itemsTotal.reduce(
@@ -102,13 +108,14 @@ function Cart() {
     });
     setItems(editedItem);
     setOrder(editedItem);
-    localStorage.setItem("cartItems", JSON.stringify(editedItem)); 
+    localStorage.setItem("cartItems", JSON.stringify(editedItem));
   }
 
   function handleDelete(e) {
     const { id } = e.target;
-    console.log(id)
-    const filterItems = sortedItems.filter((item) => String(`${item.id}${item.selectedSize}`) !== id);
+    const filterItems = sortedItems.filter(
+      (item) => String(`${item.id}${item.selectedSize}`) !== id
+    );
     setItems(filterItems);
     localStorage.setItem("cartItems", JSON.stringify(filterItems));
   }
@@ -150,10 +157,36 @@ function Cart() {
       ...order,
       shippingInfo: { ...order.shippingInfo, [name]: value },
     });
-    if({...order.shippingInfo, [name]: value }){
-      setValues({...values , isEmpty: true});
-    }
-
+    setInputError({
+      firstName: {
+        isValid: !order.shippingInfo.firstName ? false : true,
+        message: "First name is empty",
+      },
+      lastName: {
+        isValid: !order.shippingInfo.lastName ? false : true,
+        message: "Last name is empty",
+      },
+      address: {
+        isValid: !order.shippingInfo.address ? false : true,
+        message: "Address is empty",
+      },
+      phone: {
+        isValid: !order.shippingInfo.phone ? false : true,
+        message: "Phone is empty",
+      },
+      city: {
+        isValid: !order.shippingInfo.city ? false : true,
+        message: "City is empty",
+      },
+      postalCode: {
+        isValid: !order.shippingInfo.postalCode ? false : true,
+        message: "Postalcode is empty",
+      },
+      pickupLocation: {
+        isValid: !order.shippingInfo.pickupLocation ? false : true,
+        message: "Pickup location not selected",
+      },
+    });
   }
 
   function handleCheckout(e) {
@@ -161,7 +194,40 @@ function Cart() {
       ...order,
       orderId: String(Math.floor(Math.random() * 899999 + 100000)),
     });
-    navigate("/thankyou");
+    
+      setInputError({
+        firstName: {
+          isValid: !order.shippingInfo.firstName ? false : true,
+          message: "First name is empty",
+        },
+        lastName: {
+          isValid: !order.shippingInfo.lastName ? false : true,
+          message: "Last name is empty",
+        },
+        address: {
+          isValid: !order.shippingInfo.address ? false : true,
+          message: "Address is empty",
+        },
+        phone: {
+          isValid: !order.shippingInfo.phone ? false : true,
+          message: "Phone is empty",
+        },
+        city: {
+          isValid: !order.shippingInfo.city ? false : true,
+          message: "City is empty",
+        },
+        postalCode: {
+          isValid: !order.shippingInfo.postalCode ? false : true,
+          message: "Postalcode is empty",
+        },
+        pickupLocation: {
+          isValid: !order.shippingInfo.pickupLocation ? false : true,
+          message: "Pickup location not selected",
+        },
+      });
+   
+   
+   
   }
 
   return (
@@ -278,44 +344,66 @@ function Cart() {
               className="input-field"
               onChange={handleTextField}
               name="firstName"
+              containerClassName="input-container"
+              errorMessage={inputErrors.firstName.message}
+              isValid={inputErrors.firstName.isValid}
             />
             <TextField
               placeholder="Last Name"
               className="input-field"
               onChange={handleTextField}
               name="lastName"
+              containerClassName="input-container"
+              errorMessage={inputErrors.lastName.message}
+              isValid={inputErrors.lastName.isValid}
             />
             <TextField
               placeholder="Address"
               className="input-field"
               onChange={handleTextField}
               name="address"
+              containerClassName="input-container"
+              errorMessage={inputErrors.address.message}
+              isValid={inputErrors.address.isValid}
             />
             <TextField
               placeholder="Phone"
               className="input-field"
               onChange={handleTextField}
               name="phone"
+              containerClassName="input-container"
+              errorMessage={inputErrors.phone.message}
+              isValid={inputErrors.phone.isValid}
             />
-            <select
-              className="first-option"
-              name="city"
-              onChange={handleTextField}
-            >
-              <option value="" disabled hidden>
-                City
-              </option>
-              {cities.map((city) => (
-                <option key={city} value={city}>
-                  {city}
+            <div className="select-container">
+              <select
+                className="first-option"
+                name="city"
+                onChange={handleTextField}
+              >
+                <option value="" disabled hidden>
+                  City
                 </option>
-              ))}
-            </select>
+                {cities.map((city) => (
+                  <option key={city} value={city}>
+                    {city}
+                  </option>
+                ))}
+              </select>
+              {!inputErrors.city.isValid && (
+                <label className="textfield-error">
+                  {inputErrors.city.message}
+                </label>
+              )}
+            </div>
             <TextField
               placeholder="Postal Code "
               className="input-field"
               onChange={handleTextField}
               name="postalCode"
+              containerClassName="input-container"
+              errorMessage={inputErrors.postalCode.message}
+              isValid={inputErrors.postalCode.isValid}
             />
           </div>
         </form>
@@ -336,19 +424,20 @@ function Cart() {
             value="delivery"
           />
         </form>
+        <div className="error-label-container">
+          {!inputErrors.pickupLocation.isValid && (
+            <label className="textfield-error">
+              {inputErrors.pickupLocation.message}
+            </label>
+          )}
+        </div>
       </div>
+
       <div className="checkout-button-container">
-        <Button
-          className="checkout-button"
-          onClick={handleCheckout}
-          disabled={!values.isEmpty ? true : false}
-        >
+        <Button className="checkout-button" onClick={handleCheckout}>
           Checkout
         </Button>
       </div>
-      {!values.isEmpty ? (
-        <p className="warning-message">Please fill the input !</p>
-      ) : null}
     </div>
   );
 }

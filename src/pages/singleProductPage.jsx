@@ -3,7 +3,6 @@ import { useLocation } from "react-router-dom";
 import Button from "../common/button";
 import { useState } from "react";
 import QuantityCounter from "../common/quantityCounter";
-import Input from "../common/textField";
 import RadioButton from "../common/radioButton";
 import { useEffect } from "react";
 
@@ -26,8 +25,6 @@ function SingleProductPage() {
     const currentItem = convertedItems.find(
       (item) => item.id === id && selectedSize === item.selectedSize
     );
-
-    // console.log(filteredData);
 
     if (!selectedSize) {
       setIsSelected(false);
@@ -71,7 +68,6 @@ function SingleProductPage() {
 
   function handleSizeChange(e) {
     const { value } = e.target;
-
     setProductData({ ...productData, selectedSize: value });
     setIsSelected(true);
   }
