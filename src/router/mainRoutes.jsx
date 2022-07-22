@@ -17,7 +17,7 @@ function MainRouter() {
         element={<SingleProductPage />}
       />
       <Route path="/cart" element={<Cart />} />
-      <Route path="/thankyou" element={<ThankYou />} />
+      <Route path="/thankyou/:orderId" element={<ThankYou />} />
     </Routes>
   );
 }

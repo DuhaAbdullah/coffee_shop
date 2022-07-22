@@ -8,14 +8,15 @@ function NavBar() {
     setName("Clicked!");
   }
 
-  const cartItems = localStorage.getItem("cartItems")
-  const items = JSON.parse(cartItems)
-  
+  const cartItems = localStorage.getItem("cartItems");
+  const items = JSON.parse(cartItems);
 
   return (
     <div className="bar">
       <div className="logo-container">
-        <img src="/logo192.png" />
+        <a href="/" className="logo-text">
+          Doha Coffee
+        </a>
       </div>
       <Link to="/menu">{name}</Link>
       <Link className="cart-container" to="/cart">

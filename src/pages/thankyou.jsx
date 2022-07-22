@@ -1,11 +1,12 @@
 import Button from "../common/button";
 import NavBar from "../components/navBar";
 import SuccessIcon from "../icons/successIcon";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function ThankYou() {
-  
-const navigate = useNavigate();
+  const params = useParams();
+  const navigate = useNavigate();
+  console.log(params);
   function handleClick() {
     navigate("/");
   }
@@ -22,7 +23,7 @@ const navigate = useNavigate();
           <div className="thankyou-heading">
             <h1>ORDER PLACED SUCCESSFULLY!</h1>
             <p>
-              Your order number is: <span>123456</span>{" "}
+              Your order number is: <span>{params.orderId}</span>{" "}
             </p>
             <p>
               Please check your <span>e-mail</span> for further information

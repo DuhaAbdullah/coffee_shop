@@ -70,6 +70,41 @@ function Cart() {
   }, []);
 
   useEffect(() => {
+    if (order.orderId) {
+      setInputError({
+        firstName: {
+          ...inputErrors.firstName,
+          isValid: !order.shippingInfo.firstName ? false : true,
+        },
+        lastName: {
+          ...inputErrors.lastName,
+          isValid: !order.shippingInfo.lastName ? false : true,
+        },
+        address: {
+          ...inputErrors.address,
+          isValid: !order.shippingInfo.address ? false : true,
+        },
+        phone: {
+          ...inputErrors.phone,
+          isValid: !order.shippingInfo.phone ? false : true,
+        },
+        city: {
+          ...inputErrors.city,
+          isValid: !order.shippingInfo.city ? false : true,
+        },
+        postalCode: {
+          ...inputErrors.postalCode,
+          isValid: !order.shippingInfo.postalCode ? false : true,
+        },
+        pickupLocation: {
+          ...inputErrors.pickupLocation,
+          isValid: !order.shippingInfo.pickupLocation ? false : true,
+        },
+      });
+    }
+  }, [order]);
+
+  useEffect(() => {
     const coupon = coupons.find(
       (coupon) => coupon.phrase === couponValue.toLowerCase()
     );
@@ -157,77 +192,25 @@ function Cart() {
       ...order,
       shippingInfo: { ...order.shippingInfo, [name]: value },
     });
-    setInputError({
-      firstName: {
-        isValid: !order.shippingInfo.firstName ? false : true,
-        message: "First name is empty",
-      },
-      lastName: {
-        isValid: !order.shippingInfo.lastName ? false : true,
-        message: "Last name is empty",
-      },
-      address: {
-        isValid: !order.shippingInfo.address ? false : true,
-        message: "Address is empty",
-      },
-      phone: {
-        isValid: !order.shippingInfo.phone ? false : true,
-        message: "Phone is empty",
-      },
-      city: {
-        isValid: !order.shippingInfo.city ? false : true,
-        message: "City is empty",
-      },
-      postalCode: {
-        isValid: !order.shippingInfo.postalCode ? false : true,
-        message: "Postalcode is empty",
-      },
-      pickupLocation: {
-        isValid: !order.shippingInfo.pickupLocation ? false : true,
-        message: "Pickup location not selected",
-      },
-    });
   }
 
   function handleCheckout(e) {
+    const orderId = String(Math.floor(Math.random() * 899999 + 100000));
     setOrder({
       ...order,
-      orderId: String(Math.floor(Math.random() * 899999 + 100000)),
+      orderId: orderId,
     });
-    
-      setInputError({
-        firstName: {
-          isValid: !order.shippingInfo.firstName ? false : true,
-          message: "First name is empty",
-        },
-        lastName: {
-          isValid: !order.shippingInfo.lastName ? false : true,
-          message: "Last name is empty",
-        },
-        address: {
-          isValid: !order.shippingInfo.address ? false : true,
-          message: "Address is empty",
-        },
-        phone: {
-          isValid: !order.shippingInfo.phone ? false : true,
-          message: "Phone is empty",
-        },
-        city: {
-          isValid: !order.shippingInfo.city ? false : true,
-          message: "City is empty",
-        },
-        postalCode: {
-          isValid: !order.shippingInfo.postalCode ? false : true,
-          message: "Postalcode is empty",
-        },
-        pickupLocation: {
-          isValid: !order.shippingInfo.pickupLocation ? false : true,
-          message: "Pickup location not selected",
-        },
-      });
-   
-   
-   
+    if (
+      order.shippingInfo.firstName &&
+      order.shippingInfo.lastName &&
+      order.shippingInfo.address &&
+      order.shippingInfo.phone &&
+      order.shippingInfo.city &&
+      order.shippingInfo.postalCode &&
+      order.shippingInfo.pickupLocation
+    ) {
+      navigate(`/thankyou/${orderId}`);
+    }
   }
 
   return (

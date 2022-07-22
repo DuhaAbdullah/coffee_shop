@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap");
+
 body {
   margin: 0;
   padding: 0;
@@ -15,6 +17,13 @@ p {
   padding: 0;
 }
 
+.logo-text {
+  font-family: "Dancing Script", cursive;
+  font-size: 30px;
+  font-weight: 800;
+  color: #1f3933;
+}
+
 .bar {
   background: rgb(192, 192, 192);
   min-height: 80px;
@@ -22,10 +31,13 @@ p {
   display: flex;
   align-items: center;
 }
+.bar a {
+  text-decoration: none;
+}
 
 .logo-container {
   height: 100%;
-  width: 100px;
+  width: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -514,7 +526,7 @@ td {
   color: #898989;
 }
 
-.pickups-buttons h4{
+.pickups-buttons h4 {
   text-align: center;
   margin-bottom: 5px;
 }
@@ -579,7 +591,7 @@ td {
   width: 200px;
 }
 
-.error-label-container{
+.error-label-container {
   display: flex;
   justify-content: center;
 }
