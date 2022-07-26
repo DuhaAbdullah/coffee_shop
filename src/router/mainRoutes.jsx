@@ -5,6 +5,8 @@ import Menu from "../pages/menu";
 import SingleProductPage from "../pages/singleProductPage";
 import Cart from "../pages/cart";
 import ThankYou from "../pages/thankyou";
+import SignIn from "../pages/signIn";
+import SignUp from "../pages/signUp";
 
 function MainRouter() {
   return (
@@ -18,6 +20,8 @@ function MainRouter() {
       />
       <Route path="/cart" element={<Cart />} />
       <Route path="/thankyou/:orderId" element={<ThankYou />} />
+      <Route path="/signIn" element={<SignIn />} />
+      <Route path="/signUp" element={<SignUp />} />
     </Routes>
   );
 }
