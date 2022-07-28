@@ -6,6 +6,8 @@ import TwitterIcon from "../icons/twitterIcon";
 import FacebookIcon from "../icons/facebookIcon";
 import InstagramIcon from "../icons/instagram.Icon";
 import YoutubeIcon from "../icons/youtubeIcon";
+import Card from "../common/card";
+import popularData from "../popularDrinks.json";
 
 function Home() {
   const navigate = useNavigate();
@@ -17,7 +19,11 @@ function Home() {
     <div>
       <NavBar />
       <div className="home-cta-container">
-        <img src="images\home-background.webp" className="cta-image" />
+        <img
+          src="images\home-background.webp"
+          className="cta-image"
+          alt="background nice"
+        />
         <p className="home-p-1">FIND THE COFFEE FOR YOU</p>
         <p className="home-p-2">Doha Coffee at home</p>
         <p className="home-p-3">
@@ -39,25 +45,26 @@ function Home() {
         <img
           className="home-banner-image"
           src="images/home-background-2.webp"
+          alt="pic"
         />
         <p className="home-p-6">FIND YOUR ROAST</p>
         <p className="home-p-7">Roast</p>
         <p className="home-p-8">Spectrum</p>
         <p className="home-p-9">
-          Discover the different coffee and flavour profiles within our
-          Starbucks<sup>®</sup> Roast Spectrum, with 3 roast categories to
-          explore, find your perfect coffee.
+          Discover the different coffee and flavour profiles within our Doha
+          <sup>®</sup> Roast Spectrum, with 3 roast categories to explore, find
+          your perfect coffee.
         </p>
       </div>
       <div className="home-about-us-container">
         <div className="about-us-image">
-          <img src="images/about-us-image.webp" />
+          <img src="images/about-us-image.webp" alt="background" />
         </div>
         <div className="about-us-content">
           <p className="home-p-10">ABOUT DOHA</p>
           <p className="home-p-11">About us</p>
           <p className="home-p-12">
-            Discover what makes Starbucks® unique, from our commitment to human
+            Discover what makes Doha® unique, from our commitment to human
             connection and quality coffee, to our welcoming coffeehouses and
             delicious coffees you can enjoy at home.
           </p>
@@ -71,16 +78,29 @@ function Home() {
           </p>
 
           <p className="home-p-12 light">
-            Which roast profile do you prefer? Starbucks® Blonde Roast, Medium
-            Roast or Dark Roast? These three make up the Starbucks® roast
-            spectrum.
+            Which roast profile do you prefer? Doha® Blonde Roast, Medium Roast
+            or Dark Roast? These three make up the Doha® roast spectrum.
           </p>
         </div>
         <div className="roast-image-container">
-          <img className="roast-image" src="images/home-background-3.webp" />
+          <img
+            className="roast-image"
+            src="images/home-background-3.webp"
+            alt="background"
+          />
         </div>
       </div>
-      <div className="swiper-container"></div>
+      <div className="cards-container">
+        {popularData.items.map((item) => (
+          <Card key={item.id}>
+            <Link to={`/menu/${popularData.id}/${item.id}`} state={item} className="popular-drink-link">
+              <img src={item.image} className="popular-drink-img"/>
+              <p className="popular-drink-name">{item.name}</p>
+              <p className="popular-drink-description">{item.description}</p>
+            </Link>
+          </Card>
+        ))}
+      </div> 
       <div className="footer-container">
         <div className="footer-logo-container">
           <a href="/" className="home-logo-text">

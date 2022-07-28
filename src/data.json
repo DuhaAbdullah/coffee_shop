@@ -121,50 +121,5 @@
         "selectedSize": ""
       }
     ]
-  },
-  {
-    "id": "popularDrinks",
-    "name": "Popular Coffees",
-    "image": "/images/black.webp",
-    "items": [
-      {
-        "id": 10,
-        "name": "Mocha",
-        "ingrediants": [
-          "milk foam",
-          "espresso",
-          "steamed milk",
-          "hot chocolate"
-        ],
-        "description": "Take that first sip, and enjoy. The Caffé Mocha you know and love, and you've just perfected it. Nice.",
-        "image": "/images/mocha.webp",
-        "price": 16,
-        "currency": "Rs.",
-        "sizes": ["small", "medium", "large"],
-        "selectedSize": ""
-      },
-      {
-        "id": 11,
-        "name": "Chocolate Cream Cold Brew",
-        "ingrediants": ["milk foam", "espresso", "steamed milk"],
-        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
-        "image": "/images/chocolate-brew.webp",
-        "price": 14,
-        "currency": "Rs.",
-        "sizes": ["small", "medium", "large"],
-        "selectedSize": ""
-      },
-      {
-        "id": 12,
-        "name": "Iced Coffee with Milk",
-        "ingrediants": ["milk foam", "espresso", "steamed milk"],
-        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
-        "image": "/images/iced-coffee-with-milk.webp",
-        "price": 14,
-        "currency": "Rs.",
-        "sizes": ["small", "medium", "large"],
-        "selectedSize": ""
-      }
-    ]
   }
 ]

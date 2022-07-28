@@ -1,7 +1,5 @@
 import React from "react";
 
-
-
 function GlobeIcon(props) {
   return (
     <svg
@@ -15,7 +13,6 @@ function GlobeIcon(props) {
       version="1.1"
       viewBox="0 0 502 502"
       xmlSpace="preserve"
-     
     >
       <path
         fill="#50A5DC"

@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Ibarra+Real+Nova:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap");
 
-
 body {
   margin: 0;
   padding: 0;
@@ -30,7 +29,6 @@ img {
   font-weight: 800;
   color: #1f3933;
   margin-right: 15px;
-
 }
 
 .bar {
@@ -213,7 +211,7 @@ hr {
 .product-description {
   font-size: 20px;
   padding-top: 5px;
-  padding-bottom: 10px ;
+  padding-bottom: 10px;
 }
 
 .product-size {
@@ -271,7 +269,7 @@ hr {
   border: 2px solid #1f3933;
 }
 
-.product-quantity{
+.product-quantity {
   font-size: 20px;
   margin-top: 15px;
   font-weight: bold;
@@ -576,7 +574,7 @@ td {
 }
 
 .thank-you-container {
-  background-color: #fff;
+  background-color: #f2f0eb;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -956,4 +954,37 @@ td {
   font-size: 15px;
   text-align: center;
   margin: auto;
+}
+
+.cards-container {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 450px;
+  margin: auto;
+}
+
+.card-wrapper {
+  background-color: #f2f0eb;
+  width: 20%;
+  height: 80%;
+  margin: 15px;
+}
+
+.popular-drink-link{
+  text-decoration: none;
+  color: #1f3933;
+}
+
+
+.popular-drink-name {
+  text-align: center;
+  font-size: 20px;
+}
+
+.popular-drink-description {
+  text-align: center;
+  font-size: 15px;
 }

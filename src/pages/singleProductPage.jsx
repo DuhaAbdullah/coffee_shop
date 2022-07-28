@@ -30,6 +30,8 @@ function SingleProductPage() {
       setIsSelected(false);
     } else {
       if (!convertedItems.length) {
+
+
         console.log("cart is empty length 0");
         localStorage.setItem(
           "cartItems",

@@ -234,7 +234,7 @@ function Cart() {
               return (
                 <tr key={`${item.id}${item.selectedSize}`}>
                   <td>
-                    <img src={item.image} />
+                    <img src={item.image}  alt="wow"/>
                     <p>{item.name}</p>
                     <div className="size-badge-container">
                       <p className="size-badge">

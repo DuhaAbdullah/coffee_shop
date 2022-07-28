@@ -1,0 +1,51 @@
+{
+  "id": "popularDrinks",
+  "name": "Popular Coffees",
+  "image": "/images/black.webp",
+  "items": [
+    {
+      "id": 10,
+      "name": "Vietnamese Iced Coffee",
+      "ingrediants": ["milk foam", "espresso", "steamed milk", "hot chocolate"],
+      "description": "ULIIMATE REFRESHMENT",
+      "image": "/images/Vietnamese-Iced-Coffee.webp",
+      "price": 16,
+      "currency": "Rs.",
+      "sizes": ["small", "medium", "large"],
+      "selectedSize": ""
+    },
+    {
+      "id": 11,
+      "name": "Iced Caramel Macchiato",
+      "ingrediants": ["milk foam", "espresso", "steamed milk"],
+      "description": "RICH WITH HINTS OF VANILLA",
+      "image": "/images/Iced-Caramel-Macchiato.webp",
+      "price": 14,
+      "currency": "Rs.",
+      "sizes": ["small", "medium", "large"],
+      "selectedSize": ""
+    },
+    {
+      "id": 12,
+      "name": "Café au Lait",
+      "ingrediants": ["milk foam", "espresso", "steamed milk"],
+      "description": "DELICIOUSLY SIMPLE TO MAKE",
+      "image": "/images/Café-au-Lait.webp",
+      "price": 14,
+      "currency": "Rs.",
+      "sizes": ["small", "medium", "large"],
+      "selectedSize": ""
+    },
+    {
+      "id": 13,
+      "name": "Iced Latte",
+      "ingrediants": ["milk foam", "espresso", "steamed milk"],
+      "description": "RIFRISHNGLY COOL",
+      "image": "/images/Iced-Latte.webp",
+      "price": 14,
+      "currency": "Rs.",
+      "sizes": ["small", "medium", "large"],
+      "selectedSize": ""
+    }
+  ]
+}
