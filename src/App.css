@@ -624,7 +624,7 @@ td {
 }
 
 .sign-in-container {
-  background-color: #fff;
+  background-color: #f2f0eb;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -665,7 +665,7 @@ td {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 132px;
+  width: 139px;
   position: absolute;
   right: 140px;
   font-weight: bold;
@@ -837,7 +837,7 @@ td {
 }
 
 .home-p-10 {
-  font-size: 23;
+  font-size: 16px;
   font-weight: 600;
   color: #127a62;
 }
@@ -956,6 +956,11 @@ td {
   margin: auto;
 }
 
+.popular-drinks-container {
+  background-color: #fff;
+  text-align: center;
+}
+
 .cards-container {
   background-color: #ffffff;
   display: flex;
@@ -973,11 +978,10 @@ td {
   margin: 15px;
 }
 
-.popular-drink-link{
+.popular-drink-link {
   text-decoration: none;
   color: #1f3933;
 }
-
 
 .popular-drink-name {
   text-align: center;
@@ -987,4 +991,11 @@ td {
 .popular-drink-description {
   text-align: center;
   font-size: 15px;
+}
+
+.section-title {
+  font-size: 32px;
+  color: #0c6651;
+  font-weight: 600;
+  padding-top: 20px;
 }

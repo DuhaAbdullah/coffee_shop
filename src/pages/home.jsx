@@ -90,17 +90,24 @@ function Home() {
           />
         </div>
       </div>
-      <div className="cards-container">
-        {popularData.items.map((item) => (
-          <Card key={item.id}>
-            <Link to={`/menu/${popularData.id}/${item.id}`} state={item} className="popular-drink-link">
-              <img src={item.image} className="popular-drink-img"/>
-              <p className="popular-drink-name">{item.name}</p>
-              <p className="popular-drink-description">{item.description}</p>
-            </Link>
-          </Card>
-        ))}
-      </div> 
+      <div className="popular-drinks-container">
+        <p className="section-title">POPULAR DRINKS</p>
+        <div className="cards-container">
+          {popularData.items.map((item) => (
+            <Card key={item.id}>
+              <Link
+                to={`/menu/${popularData.id}/${item.id}`}
+                state={item}
+                className="popular-drink-link"
+              >
+                <img src={item.image} className="popular-drink-img" />
+                <p className="popular-drink-name">{item.name}</p>
+                <p className="popular-drink-description">{item.description}</p>
+              </Link>
+            </Card>
+          ))}
+        </div>
+      </div>
       <div className="footer-container">
         <div className="footer-logo-container">
           <a href="/" className="home-logo-text">
