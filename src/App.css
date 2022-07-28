@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Ibarra+Real+Nova:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap");
 
+
 body {
   margin: 0;
   padding: 0;
@@ -29,6 +30,7 @@ img {
   font-weight: 800;
   color: #1f3933;
   margin-right: 15px;
+
 }
 
 .bar {
@@ -208,6 +210,18 @@ hr {
   font-size: 22px;
 }
 
+.product-description {
+  font-size: 20px;
+  padding-top: 5px;
+  padding-bottom: 10px ;
+}
+
+.product-size {
+  font-size: 20px;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
 .options-container {
   display: flex;
   margin-top: 10px;
@@ -257,11 +271,17 @@ hr {
   border: 2px solid #1f3933;
 }
 
+.product-quantity{
+  font-size: 20px;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
 .app-button {
   margin-top: 20px;
   height: 50px;
   width: 100%;
-  color: #fff;
+  color: #f2f0eb;
   border: #1f3933 solid;
   background-color: #1f3933;
   font-weight: bold;
@@ -874,7 +894,6 @@ td {
   font-size: 40px;
   font-weight: 800;
   color: #f2f0eb;
-
   text-decoration: none;
 }
 
@@ -897,7 +916,7 @@ td {
   font-weight: 600;
 }
 
-.home-location-container{
+.home-location-container {
   display: flex;
 }
 .globe-svg {
@@ -915,7 +934,6 @@ td {
   color: #566a65;
   font-size: 15px;
   text-decoration: none;
-
 }
 
 .social-accounts-container {
@@ -927,15 +945,14 @@ td {
 }
 
 .social-account {
- stroke: #566a65;
- fill: #566a65;
- stroke-width: 1px;
+  stroke: #566a65;
+  fill: #566a65;
+  stroke-width: 1px;
 }
 
 .home-p-16 {
   width: 40%;
   color: #566a65;
-
   font-size: 15px;
   text-align: center;
   margin: auto;

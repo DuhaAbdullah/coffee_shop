@@ -17,7 +17,7 @@ function SingleProductPage() {
 
   useEffect(() => {
     setProductData(location.state);
-  }, []);
+  }, [location.state]);
 
   function handleClickAddToCart(e) {
     const cartItems = localStorage.getItem("cartItems");
@@ -84,19 +84,19 @@ function SingleProductPage() {
     <div>
       <NavBar />
       <div className="product-head">
-        <img src={image} />
+        <img src={image} alt="for product" />
         <h1>{name}</h1>
       </div>
       <div className="product-body">
         <div className="product-image-container">
-          <img src={image} />
+          <img src={image} alt="for product body"/>
         </div>
         <div className="product-info">
           <p className="product-name">{name}</p>
           <p className="product-price"> Rs.{price}</p>
           <hr />
           <p className="product-description">{description}</p>
-          <p>Size:</p>
+          <p className="product-size">Size:</p>
           <div className="options-container">
             <form onChange={handleSizeChange}>
               {sizes.map((size) => (
@@ -111,7 +111,7 @@ function SingleProductPage() {
             </form>
           </div>
           <div className="counter-container">
-            <p>Quantity:</p>
+            <p className="product-quantity">Quantity:</p>
             <QuantityCounter
               className="cart-quantity-counter"
               onIncrement={handleIncrement}
